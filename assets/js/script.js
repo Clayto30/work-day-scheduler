@@ -4,19 +4,22 @@ var currentDate = moment().format("dddd, MMMM Do");
 var currentHour = (moment().hour());
 // set currentDate on page
 $("#currentDay").append(currentDate);
-
 //capture the button click
 $(".btn").on("click", function() {
    var task = $(this).prev().val();
-   // localStorage.setItem("tasks", task);
-   var taskHour = $(this).prev().attri('id');
-   /*taskDataObject {
+   var taskHour = $(this).prev().attr('id');
+   var tasks = {"tasks": [
+    {name: task, type: taskHour}
+   ]};
+   localStorage.setItem("tasks", tasks);
+  /* var taskDataObj = {
     name: task,
-    type: taskHour
-  }
-  */
+    type: taskHour,
+    
+}; 
+tasks.push(taskDataObj);
+*/
 });
-
 if (currentHour < 9) {
 $("#hour-9").addClass( "future" );
 } else if (currentHour > 9) {
